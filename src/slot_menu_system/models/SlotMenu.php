@@ -8,7 +8,7 @@ use Closure;
 class SlotMenu
 {
     /**
-     * @var Menu[]
+     * @var SlotMenuElement[]
      */
     private $menus;
 
@@ -18,7 +18,7 @@ class SlotMenu
     }
 
     /**
-     * @return Menu[]
+     * @return SlotMenuElement[]
      */
     public function getMenus(): array {
         return $this->menus;

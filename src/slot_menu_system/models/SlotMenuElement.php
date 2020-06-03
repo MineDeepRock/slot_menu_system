@@ -6,7 +6,7 @@ namespace slot_menu_system\models;
 use Closure;
 use pocketmine\Player;
 
-class Menu
+class SlotMenuElement
 {
     /**
      * @var int

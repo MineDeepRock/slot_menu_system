@@ -7,7 +7,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\item\ItemIds;
 use pocketmine\Player;
-use slot_menu_system\models\Menu;
+use slot_menu_system\models\SlotMenuElement;
 use slot_menu_system\models\SlotMenu;
 use slot_menu_system\SlotMenuSystem;
 
@@ -26,16 +26,16 @@ class SlotMenuCommand extends Command
             }
 
             $slotMenu = new SlotMenu([
-                new Menu(ItemIds::EMERALD, "Title", function (Player $player) {
+                new SlotMenuElement(ItemIds::EMERALD, "Title", function (Player $player) {
                     $player->addTitle("Title");
                 }),
-                new Menu(ItemIds::DIAMOND, "Message", function (Player $player) {
+                new SlotMenuElement(ItemIds::DIAMOND, "Message", function (Player $player) {
                     $player->sendMessage("Title");
                 }),
-                new Menu(ItemIds::IRON_INGOT, "Popup", function (Player $player) {
+                new SlotMenuElement(ItemIds::IRON_INGOT, "Popup", function (Player $player) {
                     $player->sendPopup("Popup");
                 }),
-                new Menu(ItemIds::GOLD_INGOT, "Whisper", function (Player $player) {
+                new SlotMenuElement(ItemIds::GOLD_INGOT, "Whisper", function (Player $player) {
                     $player->sendWhisper("System", "Title");
                 })
             ]);

@@ -8,7 +8,7 @@ use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\plugin\PluginBase;
 use slot_menu_system\pmmp\commands\SlotMenuCommand;
-use slot_menu_system\pmmp\items\MenuItem;
+use slot_menu_system\pmmp\items\SlotMenuElementItem;
 
 class Main extends PluginBase implements Listener
 {
@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener
         if ($event->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
             $player = $event->getPlayer();
             $item = $player->getInventory()->getItemInHand();
-            if ($item instanceof MenuItem) {
+            if ($item instanceof SlotMenuElementItem) {
                 $item->select($player);
             }
         }
@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener
             if ($packet->sound === LevelSoundEventPacket::SOUND_ATTACK_NODAMAGE) {
                 $player = $event->getPlayer();
                 $item = $player->getInventory()->getItemInHand();
-                if ($item instanceof MenuItem) {
+                if ($item instanceof SlotMenuElementItem) {
                     $item->select($player);
                 }
             }
