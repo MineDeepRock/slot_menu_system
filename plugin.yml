@@ -1,0 +1,4 @@
+name: SlotMenuSystem
+main: slot_menu_system\Main
+version: 1.0.0
+api: 3.0.0
