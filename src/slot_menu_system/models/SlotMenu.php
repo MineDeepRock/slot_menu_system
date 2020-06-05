@@ -10,7 +10,7 @@ class SlotMenu
     /**
      * @var SlotMenuElement[]
      */
-    private $menus;
+    protected $menus;
 
 
     public function __construct(array $menus) {
