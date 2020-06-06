@@ -17,13 +17,18 @@ class SlotMenuElement
      */
     private $name;
     /**
+     * @var int
+     */
+    private $index;
+    /**
      * @var Closure
      */
     private $onSelected;
 
-    public function __construct(int $itemId, string $name, Closure $onSelected) {
+    public function __construct(int $itemId, string $name, int $index, Closure $onSelected) {
         $this->itemId = $itemId;
         $this->name = $name;
+        $this->index = $index;
         $this->onSelected = $onSelected;
     }
 
@@ -43,5 +48,11 @@ class SlotMenuElement
      */
     public function getName(): string {
         return $this->name;
+    }
+    /**
+     * @return int
+     */
+    public function getIndex(): int {
+        return $this->index;
     }
 }

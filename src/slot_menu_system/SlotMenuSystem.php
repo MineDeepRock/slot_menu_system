@@ -12,13 +12,12 @@ use slot_menu_system\pmmp\items\SlotMenuElementItem;
 class SlotMenuSystem
 {
     static function send(Player $player, SlotMenu $slotMenu): void {
-        $contents = array_map(function (SlotMenuElement $menu) {
+        $player->getInventory()->setContents([]);
+        foreach ($slotMenu->getMenus() as $menu) {
             $menuItem = new SlotMenuElementItem($menu, $menu->getItemId(), 0, $menu->getName());
             $menuItem->setCustomName($menu->getName());
-            return $menuItem;
-        }, $slotMenu->getMenus());
-
-        $player->getInventory()->setContents($contents);
+            $player->getInventory()->setItem($menu->getIndex(), $menuItem);
+        }
     }
 
     static function close(Player $player): void {
