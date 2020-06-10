@@ -7,13 +7,11 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\plugin\PluginBase;
-use slot_menu_system\pmmp\commands\SlotMenuCommand;
 use slot_menu_system\pmmp\items\SlotMenuElementItem;
 
 class Main extends PluginBase implements Listener
 {
     public function onEnable() {
-        $this->getServer()->getCommandMap()->register("slotMenu", new SlotMenuCommand());
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
     }
 
@@ -39,5 +37,4 @@ class Main extends PluginBase implements Listener
             }
         }
     }
-
 }
