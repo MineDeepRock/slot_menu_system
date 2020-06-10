@@ -42,7 +42,7 @@ class LobbySlotMenu extends SlotMenu
                 SlotMenuSystem::send($player, new FriendsSlotMenu());
             }),
             new SlotMenuElement(ItemIds::IRON_INGOT, "ガチャ", 1, function (Player $player) {
-                SlotMenuSystem::send($player, new FriendsSlotMenu());
+                SlotMenuSystem::send($player, new ClatterSlotMenu());
             }),
         ];
         parent::__construct($menus);
