@@ -26,11 +26,11 @@ class SlotMenuElement
      */
     private $onSelected;
     /**
-     * @var Closure
+     * @var null|Closure
      */
     private $onClickedBlock;
 
-    public function __construct(int $itemId, string $name, Closure $onSelected, Closure $onClickedBlock, ?int $index = null) {
+    public function __construct(int $itemId, string $name, Closure $onSelected, ?Closure $onClickedBlock = null, ?int $index = null) {
         $this->itemId = $itemId;
         $this->name = $name;
         $this->index = $index;
@@ -43,7 +43,9 @@ class SlotMenuElement
     }
 
     public function callOnClockedBlock(Player $Player, Block $block): void {
-        ($this->onClickedBlock)($Player, $block);
+        if ($this->onClickedBlock !== null) {
+            ($this->onClickedBlock)($Player, $block);
+        }
     }
 
     /**
