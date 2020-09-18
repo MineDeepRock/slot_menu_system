@@ -2,6 +2,7 @@
 
 namespace slot_menu_system;
 
+use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
@@ -15,12 +16,23 @@ class Main extends PluginBase implements Listener
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
+    public function onBeakBlock(BlockBreakEvent $event) {
+        $player = $event->getPlayer();
+        $item = $player->getInventory()->getItemInHand();
+        if ($item instanceof SlotMenuElementItem) {
+            $item->callOnClockedBlock($player, $event->getBlock());
+            $event->setCancelled();
+        }
+    }
+
     public function onTapBlock(PlayerInteractEvent $event) {
-        if ($event->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
-            $player = $event->getPlayer();
-            $item = $player->getInventory()->getItemInHand();
-            if ($item instanceof SlotMenuElementItem) {
+        $player = $event->getPlayer();
+        $item = $player->getInventory()->getItemInHand();
+        if ($item instanceof SlotMenuElementItem) {
+            if ($event->getAction() === PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
                 $item->callOnClockedBlock($player, $event->getBlock());
+            } else {
+                $item->select($player);
             }
         }
     }

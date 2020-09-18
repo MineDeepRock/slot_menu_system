@@ -1,9 +1,7 @@
 <?php
 
-namespace slot_menu_system\models;
+namespace slot_menu_system;
 
-
-use Closure;
 
 class SlotMenu
 {
@@ -11,11 +9,9 @@ class SlotMenu
      * @var SlotMenuElement[]
      */
     protected $menus;
-    private $autoIndex;
 
-    public function __construct(array $menus, bool $autoIndex = true) {
+    public function __construct(array $menus) {
         $this->menus = $menus;
-        $this->autoIndex = $autoIndex;
     }
 
     /**
@@ -23,12 +19,5 @@ class SlotMenu
      */
     public function getMenus(): array {
         return $this->menus;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAutoIndex(): bool {
-        return $this->autoIndex;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace slot_menu_system\models;
+namespace slot_menu_system;
 
 
 use Closure;
@@ -43,7 +43,9 @@ class SlotMenuElement
     }
 
     public function callOnClockedBlock(Player $Player, Block $block): void {
-        if ($this->onClickedBlock !== null) {
+        if ($this->onClickedBlock === null) {
+            ($this->onSelected)($Player);
+        } else {
             ($this->onClickedBlock)($Player, $block);
         }
     }
@@ -67,5 +69,12 @@ class SlotMenuElement
      */
     public function getIndex(): ?int {
         return $this->index;
+    }
+
+    /**
+     * @param int|null $index
+     */
+    public function setIndex(?int $index): void {
+        $this->index = $index;
     }
 }

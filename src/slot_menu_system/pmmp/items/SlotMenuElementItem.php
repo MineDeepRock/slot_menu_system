@@ -7,7 +7,7 @@ namespace slot_menu_system\pmmp\items;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\Player;
-use slot_menu_system\models\SlotMenuElement;
+use slot_menu_system\SlotMenuElement;
 
 class SlotMenuElementItem extends Item
 {
