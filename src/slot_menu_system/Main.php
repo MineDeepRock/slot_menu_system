@@ -12,7 +12,7 @@ use slot_menu_system\pmmp\items\SlotMenuElementItem;
 class Main extends PluginBase implements Listener
 {
     public function onEnable() {
-        $this->getServer()->getPluginManager()->registerEvents($this,$this);
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
     public function onTapBlock(PlayerInteractEvent $event) {
@@ -20,7 +20,7 @@ class Main extends PluginBase implements Listener
             $player = $event->getPlayer();
             $item = $player->getInventory()->getItemInHand();
             if ($item instanceof SlotMenuElementItem) {
-                $item->select($player);
+                $item->callOnClockedBlock($player, $event->getBlock());
             }
         }
     }

@@ -4,6 +4,7 @@
 namespace slot_menu_system\pmmp\items;
 
 
+use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use slot_menu_system\models\SlotMenuElement;
@@ -22,5 +23,9 @@ class SlotMenuElementItem extends Item
 
     public function select(Player $player) {
         $this->menu->select($player);
+    }
+
+    public function callOnClockedBlock(Player $Player, Block $block): void {
+        $this->menu->callOnClockedBlock($Player, $block);
     }
 }
