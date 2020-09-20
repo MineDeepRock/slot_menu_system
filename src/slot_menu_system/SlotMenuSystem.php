@@ -26,6 +26,7 @@ class SlotMenuSystem
         foreach ($slotMenu->getMenus() as $slotMenuElement) {
             if ($slotMenuElement->getIndex() !== null) {
                 $setMenuItem($slotMenuElement);
+                continue;
             }
 
             while (in_array($index, $usedIndexList)) {
